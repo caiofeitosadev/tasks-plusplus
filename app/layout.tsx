@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Geist, Geist_Mono } from 'next/font/google';
 import './globals.css';
 import { Header } from '@/components/header';
+import { Providers } from '@/components/provider/providers';
 
 const geistSans = Geist({
   variable: '--font-geist-sans',
@@ -14,7 +15,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: 'Tasks++',
+  title: {
+    default: 'Tasks++',
+    template: '%s | Tasks++',
+  },
   description: 'Organize your tasks easily',
 };
 
@@ -28,8 +32,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Header />
-        {children}
+        <Providers>
+          <Header />
+          {children}
+        </Providers>
       </body>
     </html>
   );
