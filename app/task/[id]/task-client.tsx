@@ -105,7 +105,7 @@ export default function TaskClient({ task, user }: Props) {
 
   return (
     <div className="bg-[#080d10] w-full min-h-[calc(100vh-80px)] flex flex-col">
-      <main className="w-full max-w-7xl flex flex-col gap-8 p-6">
+      <main className="w-full max-w-7xl mx-auto flex flex-col gap-8 p-6">
         <section className="flex flex-col gap-4">
           <h1 className="text-slate-50 text-3xl font-bold">Task</h1>
 

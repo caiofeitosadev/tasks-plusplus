@@ -1,36 +1,122 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Estudo - Task Management App
 
-## Getting Started
+Uma aplicação de gerenciamento de tarefas desenvolvida com Next.js, TypeScript, Firebase e NextAuth.
 
-First, run the development server:
+## 🚀 Tecnologias Utilizadas
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Next.js 16.1.6** - Framework React para produção
+- **React 19.2.3** - Biblioteca para interfaces de usuário
+- **TypeScript** - JavaScript com tipagem estática
+- **Tailwind CSS** - Framework CSS utilitário
+- **Firebase** - Plataforma de desenvolvimento de aplicações
+- **NextAuth.js** - Autenticação para Next.js
+- **React Icons** - Biblioteca de ícones
+
+## 📋 Funcionalidades
+
+- ✅ Autenticação de usuários com NextAuth
+- ✅ Gerenciamento de tarefas (CRUD)
+- ✅ Dashboard para visualizar tarefas
+- ✅ Interface responsiva com Tailwind CSS
+- ✅ Integração com Firebase para armazenamento de dados
+- ✅ Roteamento dinâmico para tarefas individuais
+
+## 🛠️ Instalação e Configuração
+
+### Pré-requisitos
+
+- Node.js (versão 18 ou superior)
+- npm ou yarn
+- Conta no Firebase
+- Conta no provedor de autenticação (Google, GitHub, etc.)
+
+### Passos para instalação
+
+1. **Clone o repositório:**
+
+   ```bash
+   git clone <https://github.com/caiofeitosadev/tasks-plusplus.git>
+   cd tasks
+   ```
+
+2. **Instale as dependências:**
+
+   ```bash
+   npm install
+   # ou
+   yarn install
+   ```
+
+3. **Configure o Firebase:**
+   - Crie um projeto no [Firebase Console](https://console.firebase.google.com/)
+   - Ative o Firestore Database
+   - Copie as configurações do SDK para `lib/firebaseConnection.ts`
+
+4. **Configure a autenticação:**
+   - Configure os provedores de autenticação no NextAuth
+   - Adicione as variáveis de ambiente necessárias
+
+5. **Execute o projeto:**
+
+   ```bash
+   npm run dev
+   # ou
+   yarn dev
+   ```
+
+   A aplicação estará disponível em [http://localhost:3000](http://localhost:3000)
+
+## 📁 Estrutura do Projeto
+
+```
+tasks/
+├── app/                    # Páginas da aplicação (App Router)
+│   ├── api/
+│   │   └── auth/[...nextauth]/
+│   ├── dashboard/          # Página do dashboard
+│   ├── task/[id]/          # Página de tarefa individual
+│   ├── globals.css         # Estilos globais
+│   ├── layout.tsx          # Layout principal
+│   └── page.tsx            # Página inicial
+├── components/             # Componentes reutilizáveis
+│   ├── header/             # Componente de cabeçalho
+│   ├── provider/           # Provedores de contexto
+│   └── textarea/           # Componente de textarea customizado
+├── lib/                    # Utilitários e configurações
+│   ├── auth.ts             # Configuração do NextAuth
+│   └── firebaseConnection.ts # Conexão com Firebase
+├── public/                 # Arquivos estáticos
+└── package.json            # Dependências e scripts
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🔧 Scripts Disponíveis
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- `npm run dev` - Inicia o servidor de desenvolvimento
+- `npm run build` - Build da aplicação para produção
+- `npm run start` - Inicia o servidor de produção
+- `npm run lint` - Executa o linter ESLint
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🌐 Deploy
 
-## Learn More
+Esta aplicação pode ser facilmente implantada em plataformas como:
 
-To learn more about Next.js, take a look at the following resources:
+- [Vercel](https://vercel.com/) (recomendado para Next.js)
+- [Netlify](https://netlify.com/)
+- [Railway](https://railway.app/)
+- [Render](https://render.com/)
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 🤝 Contribuição
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+1. Fork o projeto
+2. Crie uma branch para sua feature (`git checkout -b feature/AmazingFeature`)
+3. Commit suas mudanças (`git commit -m 'Add some AmazingFeature'`)
+4. Push para a branch (`git push origin feature/AmazingFeature`)
+5. Abra um Pull Request
 
-## Deploy on Vercel
+## 📝 Licença
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Este projeto está sob a licença MIT. Veja o arquivo `LICENSE` para mais detalhes.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 📞 Contato
+
+Para dúvidas ou sugestões, entre em contato através das issues do repositório.

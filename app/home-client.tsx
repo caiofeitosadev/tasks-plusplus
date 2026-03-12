@@ -19,9 +19,13 @@ export default function Home({ posts, comments }: Props) {
           />
         </div>
 
-        <h1 className="text-slate-50 font-bold text-3xl sm:text-4xl md:text-5xl text-center leading-tight mt-4">
+        <h1 className="text-slate-50 font-bold text-3xl sm:text-4xl md:text-5xl text-center leading-tight mt-4 max-w-3xl mx-auto">
           System designed for you to organize your studies and tasks
         </h1>
+        <p className="text-slate-400 text-center max-w-xl mx-auto mt-4">
+          Create tasks, share them publicly and receive feedback from other
+          users.
+        </p>
 
         <div className="flex flex-wrap items-center justify-center gap-4 mt-4">
           <span className="bg-slate-900/70 hover:bg-slate-800/80 backdrop-blur-sm text-slate-300 py-3 px-6 rounded-sm border border-slate-800 hover:border-slate-700 hover:-translate-y-0.5 transition-all duration-200 cursor-pointer">
