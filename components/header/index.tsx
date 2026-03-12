@@ -28,7 +28,7 @@ export function Header() {
               </Link>
             </>
           : <button
-              onClick={() => signIn('google')}
+              onClick={() => signIn()}
               className="cursor-pointer bg-[#ff7a00] hover:bg-[#ff8f26] text-white px-6 py-3 rounded-md transition-colors"
             >
               Get Started
