@@ -132,12 +132,14 @@ export default function DashboardClient({ user }: UserProps) {
                   </span>
                 )}
 
-                <button
-                  className="text-slate-400 hover:text-white transition cursor-pointer"
-                  onClick={() => handleShare(task.id)}
-                >
-                  <FiShare2 size={20} color="#f8fafc" />
-                </button>
+                {task.isPublic && (
+                  <button
+                    className="text-slate-400 hover:text-white transition cursor-pointer"
+                    onClick={() => handleShare(task.id)}
+                  >
+                    <FiShare2 size={20} color="#f8fafc" />
+                  </button>
+                )}
               </div>
 
               <div className="flex items-center justify-between">
