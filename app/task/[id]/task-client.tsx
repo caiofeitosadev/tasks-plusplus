@@ -1,6 +1,9 @@
 'use client';
 
 import { Textarea } from '@/components/textarea';
+import { db } from '@/lib/firebaseConnection';
+import { addDoc, collection } from 'firebase/firestore';
+import { useState } from 'react';
 
 type Props = {
   task: {
@@ -18,6 +21,26 @@ type Props = {
 };
 
 export default function TaskClient({ task, user }: Props) {
+  const [comment, setComment] = useState('');
+
+  async function handleComment(event: React.SyntheticEvent<HTMLFormElement>) {
+    event.preventDefault();
+    if (comment === '') return;
+    if (!user) return;
+    try {
+      const docRef = await addDoc(collection(db, 'comments'), {
+        comment: comment,
+        created: new Date(),
+        userEmail: user.email,
+        user: user.name,
+        taskId: task.id,
+      });
+      setComment('');
+    } catch (err) {
+      console.log(err);
+    }
+  }
+
   return (
     <div className="bg-[#080d10] w-full min-h-[calc(100vh-80px)] flex flex-col">
       <main className="w-full max-w-7xl flex flex-col gap-4 p-6">
@@ -29,11 +52,16 @@ export default function TaskClient({ task, user }: Props) {
         </section>
         <section className="flex flex-col gap-6 mt-10">
           <h2 className="text-slate-50 text-xl font-bold">Leave a comment</h2>
-          <form action="" className="flex flex-col gap-6">
-            <Textarea placeholder="Write your comment" />
+          <form onSubmit={handleComment} className="flex flex-col gap-6">
+            <Textarea
+              placeholder="Write your comment"
+              value={comment}
+              onChange={(e) => setComment(e.target.value)}
+            />
             <button
               type="submit"
-              className="bg-[#ff7a00] hover:bg-[#ff8f26] text-white px-6 py-3 rounded-md font-medium transition-all hover:shadow-[0_0_15px_rgba(255,122,0,0.35)] cursor-pointer"
+              className="bg-[#ff7a00] hover:bg-[#ff8f26] text-white px-6 py-3 rounded-md font-medium transition-all hover:shadow-[0_0_15px_rgba(255,122,0,0.35)] cursor-pointer disabled:cursor-not-allowed"
+              disabled={!user}
             >
               Comment
             </button>
