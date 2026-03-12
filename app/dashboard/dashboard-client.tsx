@@ -41,15 +41,11 @@ export default function DashboardClient({ user }: UserProps) {
     const q = query(tasksRef, where('userEmail', '==', user?.email));
 
     const unsubscribe = onSnapshot(q, (snapshot) => {
-      const taskList: TaskProps[] = [];
-
-      snapshot.forEach((doc) => {
-        taskList.push({
-          id: doc.id,
-          task: doc.data().task,
-          isPublic: doc.data().public,
-        });
-      });
+      const taskList = snapshot.docs.map((doc) => ({
+        id: doc.id,
+        task: doc.data().task,
+        isPublic: doc.data().public,
+      }));
       setTasks(taskList);
     });
     return () => unsubscribe();
@@ -85,6 +81,7 @@ export default function DashboardClient({ user }: UserProps) {
       `${process.env.NEXT_PUBLIC_URL}/task/${id}`,
     );
   }
+
   async function handleDeleteTask(id: string) {
     const docRef = doc(db, 'tasks', id);
     await deleteDoc(docRef);
